@@ -1,4 +1,5 @@
 #! /bin/bash
+source /etc/profile
 function update {
     steamcmd +force_install_dir /usr/share/7dtd-server/ +login anonymous +app_update 294420 validate +quit
 }
