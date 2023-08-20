@@ -1,0 +1,22 @@
+#! /bin/bash
+function update {
+    steamcmd +force_install_dir /usr/share/7dtd-server/ +login anonymous +app_update 294420 validate +quit
+}
+FLAG_UPDATE=0
+if [ ! -d /usr/share/7dtd-server/ ]; then
+    mkdir /usr/share/7dtd-server/
+    FLAG_UPDATE=1
+fi
+OPTION="$1"
+shift 1
+if [ "$OPTION" == "update" ]; then
+    FLAG_UPDATE=1
+fi
+if [ "$FLAG_UPDATE" == "1" ]; then
+    update
+elif [ "$OPTION" == "run" ]; then
+    cd /usr/share/7dtd-server
+    ./startserver.sh $@
+else
+    echo "$0 [run|update] [other_options]"
+fi

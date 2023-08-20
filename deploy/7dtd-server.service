@@ -1,0 +1,15 @@
+[Unit]
+Description=7 Days to Die Game Server
+Documentation=https://game.mntmdev.com/
+
+[Service]
+User=root
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+ExecStart=/usr/bin/7dtd-server run -configfile=serverconfig.xml
+Restart=on-failure
+RestartPreventExitStatus=23
+
+[Install]
+WantedBy=multi-user.target
